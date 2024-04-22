@@ -111,15 +111,33 @@ cout << A;
 
 // 库函数法：
 #include <cctype>
-// 函数有返回值，需要一个字符去接受返回结果，不能直接输出函数，否则输出的是地址
+#include <iostream>
+char lower = 'a';
+char upper = 'A';
+
+// 在C++中，tolower函数接受一个int类型的参数(ASCII)，并返回一个转换为小写的int值，
+// 如果参数是大写字母的话。这个返回值是一个int类型的ASCII。
+// static_cast<char>用于将int类型的返回值转换为char类型。
+
+// 转换为大写
+std::cout << toupper(lower) << std::endl;
+std::cout << "大写: " << static_cast<char>(toupper(lower)) << std::endl;
+
+// 转换为小写
+std::cout << "小写: " << static_cast<char>(tolower(upper)) << std::endl;
+
+
+// 如果不使用类型转换，
+// 也可以直接声明一个char类型的变量来接收ASCII值
+
 // toupper();
 char a = 'a';
 a = toupper(a);
-cout << a;
+std::cout << a << std::endl;
 // tolower();
 char A = 'A';
 A = tolower(A);
-cout << A;
+std::cout << A;
 ```
 
 ## 转义字符
