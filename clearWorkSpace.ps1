@@ -1,8 +1,8 @@
 $directory = Get-Location
-$files = Get-ChildItem -Path $directory -Recurse -Filter "*.exec"
+$files = Get-ChildItem -Path $directory -Recurse -Filter "*.exe"
 
 if ($files.Count -eq 0) {
-    Write-Host "No .exec files found to remove."
+    Write-Host "No .exe files found to remove."
 } else {
     $files | ForEach-Object {
         $file_path = $_.FullName

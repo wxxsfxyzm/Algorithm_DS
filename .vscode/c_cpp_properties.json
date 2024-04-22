@@ -13,6 +13,16 @@
       "cStandard": "c17",
       "cppStandard": "c++11",
       "intelliSenseMode": "gcc-x64"
+    },
+    {
+      // Linux配置
+      "name": "Linux",
+      "includePath": ["${workspaceFolder}/**"],
+      "defines": ["DEBUG"],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "c17",
+      "cppStandard": "c++11",
+      "intelliSenseMode": "gcc-x64"
     }
   ],
 
