@@ -4,7 +4,7 @@
 
 ## 文件夹结构
 
-- `Algorithms/`：这个文件夹用于存放算法相关的代码。你可以在这里找到各种常见算法的实现示例和相关说明。部分题目整理和解析来自于仓库 [《代码随想录》LeetCode 刷题攻略](https://github.com/youngyangyang04/leetcode-master)。本仓库仅作个人学习使用。
+- `Algorithms/`：这个文件夹用于存放算法相关的代码。你可以在这里找到各种常见算法的实现示例和相关说明。部分题目整理和解析来自于仓库 [《代码随想录》LeetCode 刷题攻略](https://github.com/youngyangyang04/leetcode-master)。本仓库仅作个人学习使用，不做任何其他用途。
 
 - `DataStructures/`：这个文件夹用于存放数据结构相关的代码。你可以在这里找到各种常见数据结构的实现示例和相关说明。
 
