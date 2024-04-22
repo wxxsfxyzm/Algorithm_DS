@@ -1,6 +1,6 @@
 {
   "vscode_custom_css.imports": ["file:///Users/carlyu/C++/.vscode/custom.css"],
-  "C_Cpp.autocomplete": "Default", // 安装了clangd和C/C++ Snippets后可以进用掉内置的snippets和complete
+  "C_Cpp.autocomplete": "default", // 安装了clangd和C/C++ Snippets后可以进用掉内置的snippets和complete
   "terminal.integrated.fontFamily": "Cascadia Code", // 换字体
   "terminal.integrated.fontSize": 20, // 字体大小
   "files.defaultLanguage": "cpp", // ctrl+N新建文件后默认的语言
@@ -155,14 +155,14 @@
     "**/*.exec": true, // 隐藏可执行文件
     "**/*.zip": true,
     "**/*.o": true,
-    "**/*.exe": true,
+    "**/*.exe": false, //为了区分可执行文件已经将项目可执行文件命名为.exec所以这里不隐藏
     "**/*.class": true,
     "**/.classpath": true,
     "**/.project": true,
     "**/.settings": true,
     "**/.factorypath": true
   },
-  "C_Cpp.errorSquiggles": "Disabled",
+  "C_Cpp.errorSquiggles": "enabledIfIncludesResolve", // 仅当include路径解析成功时才启用错误波浪线
   "[cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
   }

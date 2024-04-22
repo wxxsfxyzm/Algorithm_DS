@@ -18,8 +18,8 @@
       "internalConsoleOptions": "neverOpen",
       "MIMode": "lldb",
       "miDebuggerPath": "gdb",
-      "preLaunchTask": "build hello world",
-      "debugOptions": ["RedirectOutput"]
+      "preLaunchTask": "build hello world"
+      //"debugOptions": ["RedirectOutput"]
     }
   ]
 }
