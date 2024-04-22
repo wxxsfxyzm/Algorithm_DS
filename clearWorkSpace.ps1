@@ -1,4 +1,4 @@
-$directory = "C:\Users\Carl Yu\VS Code\Algorithm_DS"
+$directory = Get-Location
 $files = Get-ChildItem -Path $directory -Recurse -Filter "*.exec"
 
 if ($files.Count -eq 0) {
