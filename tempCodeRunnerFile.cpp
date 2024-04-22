@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #include <vector>
 
 void merge(std::vector<int> &array, int const left, int const mid, int const right)
