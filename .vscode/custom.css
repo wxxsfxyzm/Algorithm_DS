@@ -1,0 +1,4 @@
+/* 隐藏掉自带的markdown预览按钮，他并不好用 */
+a.action-label.codicon.codicon-open-preview {
+    display: none;
+}
