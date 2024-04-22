@@ -160,7 +160,9 @@
     "**/.classpath": true,
     "**/.project": true,
     "**/.settings": true,
-    "**/.factorypath": true
+    "**/.factorypath": true,
+    "**/.png": true, // 隐藏图片
+    "**/.jpg": true // 隐藏图片
   },
   "C_Cpp.errorSquiggles": "enabledIfIncludesResolve", // 仅当include路径解析成功时才启用错误波浪线
   "[cpp]": {
