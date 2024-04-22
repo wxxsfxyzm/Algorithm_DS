@@ -1,3 +1,3 @@
 # 最大子序和
 
-[原题链接](https://leetcode-cn.com/problems/maximum-subarray/)
+[最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)
