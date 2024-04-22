@@ -151,6 +151,7 @@
   },
   "files.exclude": {
     "**/*": false,
+    "**/.gitkeep": true, // 隐藏gitkeep文件
     "**/*.dSYM": true, // 隐藏调试
     "**/*.exec": false, // 隐藏可执行文件
     "**/*.zip": true,
