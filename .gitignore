@@ -2,4 +2,4 @@
 *.exec
 FileForTestCodes.*
 clearWorkSpace.*
-putKeepInEmptyFolders.*
+putKeepInEmptyFolder.*
