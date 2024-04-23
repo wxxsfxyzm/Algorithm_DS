@@ -34,7 +34,13 @@ bool ListInsert(SqList &L, int i, ElemType e) {
 - 最好情况：在表尾( `i = n + 1` )插入，元素后移语句不执行，时间复杂度为 `O(1)`。
 - 最坏情况：在表头( `i = 1` )插入，所有元素都后移，元素后移语句执行 n 次，时间复杂度为 `O(n)`。
 - 平均情况：在表的中间位置插入，元素后移语句执行次数为 n/2，时间复杂度为 `O(n)`。
-  $$\sum\limits_{i=1}^{n+1}p_i(n-i+1)=\sum\limits_{i=1}^{n+1}\frac{1}{n+1}(n-i+1)=\frac{1}{n+1}\sum\limits_{i=1}^{n+1}(n-i+1)=\frac{1}{n+1}\frac{n(n+1)}{2}=\frac{n}2$$
+  $$
+  \sum\limits_{i=1}^{n+1}p_i(n-i+1)=
+  \sum\limits_{i=1}^{n+1}\frac{1}{n+1}(n-i+1)=
+  \frac{1}{n+1}\sum\limits_{i=1}^{n+1}(n-i+1)=
+  \frac{1}{n+1}\frac{n(n+1)}{2}=
+  \frac{n}2
+  $$
 
 ## 2. 删除操作
 
@@ -61,7 +67,13 @@ bool ListDelete(SqList &L, int i, ElemType &e) {
 - 最好情况：在表尾( `i = n + 1` )删除，无需移动元素，时间复杂度为 `O(1)`。
 - 最坏情况：在表头( `i = 1` )删除，需移动除第一个元素外的所有元素，时间复杂度为 `O(n)`。
 - 平均情况：在表的中间位置删除，假设$p_i$是删除第 i 个元素的概率，那么平均移动次数为
-  $$\sum\limits_{i=1}^{n}p_i(n-i)=\sum\limits_{i=1}^{n}\frac{1}{n}p_i(n-i)=\frac{1}{n}\sum\limits_{i=1}^{n}p_i(n-i)=\frac{1}n\frac{n(n-1)}2=\frac{n-1}2$$
+  $$
+  \sum\limits_{i=1}^{n}p_i(n-i)=
+  \sum\limits_{i=1}^{n}\frac{1}{n}p_i(n-i)=
+  \frac{1}{n}\sum\limits_{i=1}^{n}p_i(n-i)=
+  \frac{1}n\frac{n(n-1)}2=
+  \frac{n-1}2
+  $$
   ，时间复杂度为 `O(n)`。
 
 ## 3. 按值查找操作
@@ -84,5 +96,10 @@ int LocateElem(SqList L, ElemType e) {
 - 最好情况：第一个元素就是要查找的元素，时间复杂度为 `O(1)`。
 - 最坏情况：要查找的元素在表的最后一个位置，或者根本不存在，时间复杂度为 `O(n)`。
 - 平均情况：假设$p_i$是查找第 i 个元素的概率，那么平均查找次数为
-  $$\sum\limits_{i=1}^{n}p_i×i=\sum\limits_{i=1}^{n}\frac{1}{n}i=\frac{1}{n}\sum\limits_{i=1}^{n}(n-i+1)=\frac{1}{n}\frac{n(n+1)}{2}=\frac{n+1}2$$
+  $$
+  \sum\limits_{i=1}^{n}p_i×i=
+  \sum\limits_{i=1}^{n}\frac{1}{n}×i=
+  \frac{1}{n}\frac{n(n+1)}{2}=
+  \frac{n+1}2
+  $$
   ，时间复杂度为 `O(n)`。
