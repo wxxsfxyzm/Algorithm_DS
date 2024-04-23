@@ -3,3 +3,4 @@
 FileForTestCodes.*
 clearWorkSpace.*
 putKeepInEmptyFolder.*
+.prettierignore
