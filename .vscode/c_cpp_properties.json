@@ -1,6 +1,7 @@
 {
   "configurations": [
     {
+      // Windows配置
       "browse": {
         "databaseFilename": "",
         "limitSymbolsToIncludedHeaders": true
@@ -23,6 +24,21 @@
       "cStandard": "c17",
       "cppStandard": "c++11",
       "intelliSenseMode": "gcc-x64"
+    },
+    {
+      // Mac配置
+      "name": "Mac",
+      "includePath": ["${workspaceFolder}/**"],
+      "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
+      "macFrameworkPath": [
+        "/System/Library/Frameworks",
+        "/Library/Frameworks",
+        "${workspaceFolder}/**"
+      ],
+      "compilerPath": "/usr/local/bin/gcc-13",
+      "cStandard": "c17",
+      "cppStandard": "c++11",
+      "intelliSenseMode": "macos-gcc-x64"
     }
   ],
 

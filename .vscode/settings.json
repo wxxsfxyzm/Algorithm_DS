@@ -5,12 +5,12 @@
   "terminal.integrated.fontSize": 20, // 字体大小
   "files.defaultLanguage": "cpp", // ctrl+N新建文件后默认的语言
   "editor.formatOnType": true, // 输入分号(C/C++的语句结束标识)后自动格式化当前这一行的代码
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // 默认格式化工具prettier
   "editor.formatOnSave": true, // 保存时格式化
   "editor.formatOnPaste": true, // 粘贴时格式化
   "editor.suggest.preview": true, // 在编辑器中实时预览代码建议
   "editor.suggest.snippetsPreventQuickSuggestions": false, // clangd的snippets有很多的跳转点，不用这个就必须手动触发Intellisense了
-  "editor.acceptSuggestionOnEnter": "on", // 我个人的习惯，按回车时一定是真正的换行，只有tab才会接受Intellisense
+  "editor.acceptSuggestionOnEnter": "off", // 我个人的习惯，按回车时一定是真正的换行，只有tab才会接受Intellisense
   // "editor.snippetSuggestions": "top", // （可选）snippets显示在补全列表顶端，默认是inline
   "editor.quickSuggestions": {
     "other": true,
@@ -21,7 +21,8 @@
   "code-runner.executorMap": {
     "c": "gcc '$fileName' -o '$fileNameWithoutExt.exe' -Wall -O2 -m64 -lm -static-libgcc -fexec-charset=utf-8 -finput-charset=utf-8  && clear && ./$fileNameWithoutExt.exe",
     "cpp": "g++ -std=c++11 '$fileName' -o '$fileNameWithoutExt.exe' -w -Wall -O2 -m64 -static-libgcc -fexec-charset=GBK -finput-charset=utf-8 && clear && ./$fileNameWithoutExt.exe"
-    // 当前配置: Win32
+    // 当前配置: Win32, MinGW64, gcc 8.1.0, g++ 8.1.0
+    // 其他系统需要稍作修改
     // 在输出文件后面加上.exec后缀，方便进行屏蔽
     // -finput-charset 设定输入流的文件编码，便于运行中文文件；utf8：内置终端使用；GBK：外置终端
     // -w：不显示warnings
@@ -40,7 +41,8 @@
   "clang.cxxflags": ["-std=c++11"],
   "C_Cpp.default.includePath": [
     "${workspaceFolder}/**",
-    "D:\\Dev\\MinGW64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include\\c++"
+    "D:\\Dev\\MinGW64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include\\c++",
+    "D:\\Dev\\MinGW64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include\\c++\\bits"
   ], // 默认的include路径，可以是相对路径，也可以是绝对路径
   "files.associations": {
     "vector": "cpp",
@@ -147,7 +149,8 @@
     "source_location": "cpp",
     "ranges": "cpp",
     "stop_token": "cpp",
-    "syncstream": "cpp"
+    "syncstream": "cpp",
+    "stdc++": "cpp"
   },
   "files.exclude": {
     "**/*": false,
