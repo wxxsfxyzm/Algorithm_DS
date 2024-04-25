@@ -97,7 +97,7 @@ void MatrixChain(int n)
 		for (i = 1; i <= n - r + 1; i++)//r个矩阵的r-1个空隙中依次测试最优点
 		{
 			j = i + r - 1;
-			m[i][j] = m[i][i]+m[i + 1][j] + A[i - 1] * A[i] * A[j];
+			m[i][j] = m[i][i] + m[i + 1][j] + A[i - 1] * A[i] * A[j];
 			s[i][j] = i;
 			for (k = i + 1; k < j; k++)//变换分隔位置，逐一测试
 			{
