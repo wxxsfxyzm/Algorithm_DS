@@ -9,9 +9,24 @@
 
 单链表的存储结构定义如下：
 
+教材定义：
+
 ```c
 typedef struct LNode {
     ElemType data;
     struct LNode *next;
 } LNode, *LinkList;
+```
+
+力扣定义：
+
+```c++
+// Definition for singly-linked list.
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
 ```
