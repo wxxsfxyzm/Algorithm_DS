@@ -6,6 +6,8 @@
 
 C 语言使用 malloc 分配内存空间，C++使用 new 分配内存空间。
 
+单链表的定义见[单链表的定义](../1.3.1.1.定义/main.md#单链表的定义)
+
 ```c++
 LinkList CreateListHead(LinkList &L, int n) {
     LNode *s;                                   // s 为新结点
