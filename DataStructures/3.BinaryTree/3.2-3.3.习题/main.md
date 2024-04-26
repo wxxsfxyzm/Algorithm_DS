@@ -102,7 +102,34 @@ int BiTreeDepth(BiTree T){
 }
 ```
 
-6. 暂空
+6. 假设一颗二叉树中各结点的值互不相同，其先序遍历序列和中序遍历序列分别存于两个一维数组 `A[1...n]` 和 `B[1...n]` 中，试编写算法建立该二叉树的二叉链表。
+
+- 由先序和中序遍历序列可以唯一确定一颗二叉树。
+- 算法的实现步骤如下：
+  1. 根据先序序列确定树的根结点
+  2. 根据根结点在中序序列中的位置（LNR）划分出二叉树的左、右子树包含哪些结点，然后根据左、右子树结点在先序序列中的次序确定子树的根节点，即回到步骤 1.
+     如此重复上述步骤，直到每颗子树仅有一个结点（该子树的根节点）为止。
+
+```c++
+BiTree PreInCreateTree(
+    ElemType A[], ElemType B[], int l1, int h1, int l2, int h2){
+    BiTree p = (BiTree)malloc(sizeof(BiTNode));  // 生成根结点
+    p->data = A[l1];                            // 根结点数据
+    int i;
+    for(i = l2; B[i] != p->data; i++);          // 在中序序列中找到根结点
+    int llen = i - l2;                          // 左子树结点个数
+    int rlen = h2 - i;                          // 右子树结点个数
+    if(llen)                                    // 有左子树
+        p->lchild = PreInCreateTree(A, B, l1 + 1, l1 + llen, l2, i - 1);
+    else                                        // 无左子树
+        p->lchild = nullptr;
+    if(rlen)                                    // 有右子树
+        p->rchild = PreInCreateTree(A, B, h1 - rlen + 1, h1, i + 1, h2);
+    else                                        // 无右子树
+        p->rchild = nullptr;
+    return p;                                   // 返回根结点
+}
+```
 
 7. 二叉树按二叉链表形式存储，写一个判别给定二叉树是否是完全二叉树的算法。
 
@@ -132,3 +159,28 @@ bool IsComplete(BiTree T){
     return true;                    // 是完全二叉树
 }
 ```
+
+8. 假设二叉树采用二叉链表存储结构存储，试设计一个算法，计算一颗给定二叉树的所有双分支结点个数
+
+- 双分支结点：左右孩子均不为空的结点。
+- 采用后序遍历算法，遍历到叶子结点时，若该结点是双分支结点，则计数器加 1。
+
+- 计算一颗二叉树 b 中所有双分支结点个数的递归模型 `f(b)` 如下：
+  - 若 b 为空，则 f(b) = 0
+  - 若 b 为双分支结点，则 f(b) = f(b->lchild) + f(b->rchild) + 1
+  - 其他情况：若 b 为单分支结点或叶子结点，则 f(b) = f(b->lchild) + f(b->rchild)
+
+```c++
+int DsonNodes(BiTree b){
+    if(!b)                              // 空树
+        return 0;                       // 双分支结点个数为 0
+    else if(b->lchild && b->rchild)     // 双分支结点
+        return DsonNodes(b->lchild) + DsonNodes(b->rchild) + 1;
+    else                                // 单分支结点或叶子结点
+        return DsonNodes(b->lchild) + DsonNodes(b->rchild);
+}
+```
+
+9. 假设树 B 是一颗采用二叉链表存储结构的二叉树，设计一个算法，把树中所有结点的左、右子树进行交换
+
+- 采用递归算法
