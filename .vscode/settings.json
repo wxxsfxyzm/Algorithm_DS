@@ -6,17 +6,21 @@
   "files.defaultLanguage": "cpp", // ctrl+N新建文件后默认的语言
   "editor.formatOnType": true, // 输入分号(C/C++的语句结束标识)后自动格式化当前这一行的代码
   "editor.defaultFormatter": "esbenp.prettier-vscode", // 默认格式化工具prettier
+  "[cpp]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools" // C++文件使用cpptools格式化
+  },
   "editor.formatOnSave": true, // 保存时格式化
   "editor.formatOnPaste": true, // 粘贴时格式化
   "editor.suggest.preview": true, // 在编辑器中实时预览代码建议
   "editor.suggest.snippetsPreventQuickSuggestions": false, // clangd的snippets有很多的跳转点，不用这个就必须手动触发Intellisense了
-  "editor.acceptSuggestionOnEnter": "off", // 我个人的习惯，按回车时一定是真正的换行，只有tab才会接受Intellisense
+  "editor.acceptSuggestionOnEnter": "on", // 若关闭，按回车时会换行，只有tab才会接受Intellisense
   // "editor.snippetSuggestions": "top", // （可选）snippets显示在补全列表顶端，默认是inline
   "editor.quickSuggestions": {
     "other": true,
     "comments": false,
     "strings": false
   },
+  "GBK2UTF8.autoDetect": true, // 是否主动提示编码转换
   "code-runner.runInTerminal": true, // 设置成false会在“输出”中输出，无法输入
   "code-runner.executorMap": {
     "c": "gcc '$fileName' -o '$fileNameWithoutExt.exe' -Wall -O2 -m64 -lm -static-libgcc -fexec-charset=utf-8 -finput-charset=utf-8  && clear && ./$fileNameWithoutExt.exe",
@@ -35,15 +39,15 @@
   "code-runner.ignoreSelection": false, // 默认为false，效果是鼠标选中一块代码后可以单独执行，但C是编译型语言，不适合这样用
   "code-runner.fileDirectoryAsCwd": true, // 将code runner终端的工作目录切换到文件目录再运行，对依赖cwd的程序产生影响；如果为false，executorMap要加cd $dir
   "C_Cpp.clang_format_sortIncludes": true, // 格式化时调整include的顺序（按字母排序）
-  "GBK2UTF8.autoDetect": true, // 是否主动提示编码转换
-  "clang.completion.enable": false, // 代码提示开关
-  "clang.executable": "clang", // clangd的路径
-  "clang.cxxflags": ["-std=c++11"],
   "C_Cpp.default.includePath": [
     "${workspaceFolder}/**",
     "D:\\Dev\\MinGW64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include\\c++",
     "D:\\Dev\\MinGW64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include\\c++\\bits"
   ], // 默认的include路径，可以是相对路径，也可以是绝对路径
+  "C_Cpp.errorSquiggles": "enabledIfIncludesResolve", // 仅当include路径解析成功时才启用错误波浪线
+  "clang.completion.enable": false, // clang代码提示开关，开了会有冲突
+  "clang.executable": "clang", // clangd的路径
+  "clang.cxxflags": ["-std=c++11"],
   "files.associations": {
     "vector": "cpp",
     "iomanip": "cpp",
@@ -167,9 +171,5 @@
     "**/.factorypath": true,
     "**/.png": true, // 隐藏图片
     "**/.jpg": true // 隐藏图片
-  },
-  "C_Cpp.errorSquiggles": "enabledIfIncludesResolve", // 仅当include路径解析成功时才启用错误波浪线
-  "[cpp]": {
-    "editor.defaultFormatter": "ms-vscode.cpptools"
   }
 }
