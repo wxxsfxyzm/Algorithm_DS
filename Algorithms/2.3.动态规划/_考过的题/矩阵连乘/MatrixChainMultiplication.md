@@ -28,7 +28,7 @@
 - 若`i == j`，则`dp[i][j] = 0`
 - 若`i < j`，则`dp[i][j] = min{dp[i][k] + dp[k+1][j] + dim[i-1]*dim[k]*dim[j]}`，其中`i <= k < j`
 
-即
+即+
 
 $$
 dp[i][j] = \begin{cases}
