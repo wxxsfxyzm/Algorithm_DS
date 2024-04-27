@@ -199,4 +199,115 @@ void swap(BiTree T){
 
 10. 假设二叉树采用二叉链表存储结构存储，设计一个算法，求先序遍历序列中第 `k (1 ≤ k ≤ 二叉树中结点个数)` 个结点的值。
 
-- 设置一个全局变量 `i` （初值为 1 ），来表示进行先序遍历时，当前访问的是第几个结点。然后可以借用先序遍历的模型，
+- 设置一个全局变量 `i` （初值为 1 ），来表示进行先序遍历时，当前访问的是第几个结点。然后可以借用[先序遍历](../3.2.二叉树/3.2.3.二叉树的遍历/3.2.3.1.前序遍历/main.md#先序前序遍历二叉树-nlr)的代码模型，先序遍历二叉树。当二叉树 b 为空时，返回特殊字符 `#` ，当 `k == i` 时，该节点即为要找的结点，返回 `b->data` ；当 `k != i` 时，递归遍历左子树，若找到则返回该值，否则继续递归遍历右子树。
+
+对应的递归模型如下：
+
+- 若 b 为空，则返回特殊字符 `#`
+  `f(b,k)='#'`
+- 若 k == i，则返回 b->data
+  `f(b,k)=b->data`
+- 否则，递归遍历左子树，若找到则返回该值，否则继续递归遍历右子树
+  `f(b,k)=((ch=f(b->lchild,k))!=' '?f(b->rchild,k)`
+
+```c++
+int i = 1;                          // 计数器
+ElemType PreNode(BiTree b, int k){
+    if(!b)                          // 空树
+        return '#';                 // 返回特殊字符
+    if(k == i)                      // 第 k 个结点
+        return b->data;             // 返回结点值
+    i++;                            // 计数器加 1
+    ch = PreNode(b->lchild, k);     // 递归遍历左子树
+    if(ch != '#')                   // 找到
+        return ch;                  // 返回结点值
+    return PreNode(b->rchild, k);   // 继续递归遍历右子树
+}
+```
+
+11. 已知二叉树以二叉链表存储结构存储，设计一个算法，对于书中每个元素值为 x 的结点，删去以它为根的子树，并释放相应的空间。
+
+- 要删除以元素值 x 为根的子树，只要能删除其左、右子树，就可以释放值为 x 的根节点，因此宜采用后序遍历。
+
+- 算法思想：删除值为 x 的结点，意味着应将其父结点的左（右）子女指针置空，用层次遍历易于找到某节点的父结点。本题要求删除树中每个元素值为 `x` 的结点的子树，因此要遍历完整颗二叉树。
+
+算法实现如下：
+
+```c++
+void DeleteXTree(BiTree &T){
+    if(T){                              // 非空树
+        DeleteXTree(T->lchild);          // 删除左子树
+        DeleteXTree(T->rchild);          // 删除右子树
+        delete(T);                        // 释放根结点
+    }
+}
+
+void Search(BiTree &T, ElemType x){
+    BiTree Q[];                         // 队列
+    if(T){
+        if(T->data == x){               // 找到值为 x 的结点
+            DeleteXTree(T);             // 删除以 x 为根的子树
+            return;
+        }
+        InitQueue(Q);                   // 初始化队列
+        EnQueue(Q, T);                  // 根结点入队
+        while(!isEmpty(Q)){
+            DeQueue(Q, p);              // 出队列
+            if(p->lchild){              // 左孩子非空
+                if(p->lchild->data == x){   // 找到值为 x 的结点
+                    DeleteXTree(p->lchild); // 删除以 x 为根的子树
+                    p->lchild = nullptr;    // 左孩子置空
+                    return;
+                } else
+                    EnQueue(Q, p->lchild);      // 左孩子入队
+            }
+            if(p->rchild){              // 右孩子非空
+                if(p->rchild->data == x){   // 找到值为 x 的结点
+                    DeleteXTree(p->rchild); // 删除以 x 为根的子树
+                    p->rchild = nullptr;    // 右孩子置空
+                    return;
+                } else
+                    EnQueue(Q, p->rchild);      // 右孩子入队
+            }
+        }
+```
+
+12. 在二叉树中查找值为 `x` 的结点，若找到则输出该结点的所有祖先结点，假设值为 `x` 的结点不多于一个。
+
+- 算法思想：采用非递归后续遍历，最后访问根结点，访问到值为 `x` 的结点时，栈中的结点即为该结点的祖先结点，依次出栈输出即可。
+
+算法实现如下：
+
+```c++
+typedef struct{
+    BiTree t;       // 结点指针
+    bool flag;      // 访问标记
+} stack;            //tag=0表示左子树被访问，tag=1表示右子树被访问
+
+void Search(BiTree T, ElemType x){
+    stack s[MAXSIZE];       // 栈
+    int top = -1;           // 栈顶指针
+    BiTree p = T;           // 结点指针
+    while(p || top != -1){
+        while(p && p->data != x){  // 找到值为 x 的结点
+            s[++top].t = p;         // 结点入栈
+            s[top].flag = false;    // 标记为未访问
+            p = p->lchild;          // 左孩子
+        }
+        if(p->data == x){           // 找到值为 x 的结点
+            cout << "祖先结点为：";
+            for(int i = 0; i <= top; i++)
+                cout << s[i].t->data << " ";
+            cout << endl;
+            return;
+        }
+        if(s[top].flag == true){    // 右子树被访问
+            top--;                  // 出栈
+            p = nullptr;            // 置空
+        } else {
+            s[top].flag = true;     // 标记为已访问
+            p = s[top].t->rchild;   // 右孩子
+        }
+    }
+}
+```
