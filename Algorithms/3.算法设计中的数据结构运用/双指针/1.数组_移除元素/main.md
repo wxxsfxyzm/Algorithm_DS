@@ -86,8 +86,6 @@ public:
 - 时间复杂度为 `O(n)`
 - 空间复杂度为 `O(1)`
 
-#### 代码实现 1
-
 ```cpp
 class Solution{
 public:
