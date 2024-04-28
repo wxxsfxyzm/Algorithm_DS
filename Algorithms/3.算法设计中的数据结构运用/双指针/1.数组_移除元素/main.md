@@ -99,23 +99,7 @@ public:
                 slowIndex++;                        // 更新慢指针的位置
             }
         }
+        return slowIndex;                           // 返回新数组的长度
     }
 }
-```
-
-#### 代码实现 2
-
-```cpp
-class Solution {
-public:
-    int removeElement(vector<int>& nums, int val) {
-        int slowCur=0;
-        for(int fastCur=0;fastCur<nums.size();fastCur++){
-            if(val!=nums[fastCur]){
-                nums[slowCur++]=nums[fastCur];
-            }
-        }
-        return slowCur;
-    }
-};
 ```
