@@ -213,19 +213,25 @@ public:
   作为函数参数就是可以的，因为并没有改变 `path` 的数值，执行完递归函数之后，`path` 依然是之前的数值（相当于回溯了）
 
 - 如果把代码
+
   ```cpp
   if (cur->left) traversal(cur->left, path + "->", result); // 左
   ```
+
   拆开写，就是
+
   ```cpp
   if (cur->left) {
       path += "->";
       traversal(cur->left, path, result); // 左
   }
   ```
+
   这样就会改变 `path` 的值，就不是回溯了。
   如果要补上回溯的部分，就要在递归函数调用之后，将 `path` 的值改回来。
+
   **法 1**：直接裁掉两位
+
   ```cpp
   if (cur->left) {
       path += "->";
@@ -233,7 +239,9 @@ public:
       path = path.substr(0, path.size() - 2); // 回溯
   }
   ```
+
   **法 2**：使用 `pop_back()` 方法弹出两位
+
   ```cpp
   if (cur->left) {
       path += "->";
