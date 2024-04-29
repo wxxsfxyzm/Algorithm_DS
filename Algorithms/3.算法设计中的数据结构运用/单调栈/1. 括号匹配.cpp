@@ -1,8 +1,10 @@
 #include <bits/stdc++.h>
+#include "PerformanceMonitor.h"
 using namespace std;
 class Solution {
 public:
     bool isValid(string s) {
+        PerformanceMonitor pm;
         if (s.size() % 2 == 1) return false; // 如果字符串长度为奇数，直接返回 false
         stack<char> st;
         for (char ch : s) {
@@ -24,6 +26,7 @@ public:
 class OtherSolution {
 public:
     bool isValid(string s) {
+        PerformanceMonitor pm;
         if (s.size() % 2 != 0)
             return false; // 如果s的长度为奇数，一定不符合要求
         stack<char> st;
