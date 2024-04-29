@@ -23,8 +23,8 @@
   "GBK2UTF8.autoDetect": true, // 是否主动提示编码转换
   "code-runner.runInTerminal": true, // 设置成false会在“输出”中输出，无法输入
   "code-runner.executorMap": {
-    "c": "gcc '$fileName' -o '$fileNameWithoutExt.exe' -Wall -O2 -m64 -lm -static-libgcc -fexec-charset=utf-8 -finput-charset=utf-8  && clear && ./$fileNameWithoutExt.exe",
-    "cpp": "g++ -std=c++11 '$fileName' -o '$fileNameWithoutExt.exe' -w -Wall -O2 -m64 -static-libgcc -fexec-charset=GBK -finput-charset=utf-8 && clear && ./$fileNameWithoutExt.exe"
+    "c": "gcc '$fileName' -o '$fileNameWithoutExt.exe' -Wall -O2 -m64 -lm -static-libgcc -fexec-charset=utf-8 -finput-charset=utf-8  && clear && ./'$fileNameWithoutExt.exe'",
+    "cpp": "g++ -std=c++11 '$fileName' -o '$fileNameWithoutExt.exe' -w -Wall -O2 -m64 -static-libgcc -fexec-charset=GBK -finput-charset=utf-8 && clear && ./'$fileNameWithoutExt.exe'"
     // 当前配置: Win32, MinGW64, gcc 8.1.0, g++ 8.1.0
     // 其他系统需要稍作修改
     // 在输出文件后面加上.exec后缀，方便进行屏蔽
