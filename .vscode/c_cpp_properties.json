@@ -1,7 +1,6 @@
 {
   "configurations": [
     {
-      // Windows配置
       "browse": {
         "databaseFilename": "",
         "limitSymbolsToIncludedHeaders": true
@@ -9,24 +8,21 @@
       "name": "Win32",
       "includePath": ["${workspaceFolder}/**"],
       "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
-
       "compilerPath": "D:/Dev/Mingw64/bin/gcc.exe",
       "cStandard": "c17",
       "cppStandard": "c++11",
       "intelliSenseMode": "gcc-x64"
     },
     {
-      // Linux配置
       "name": "Linux",
       "includePath": ["${workspaceFolder}/**"],
-      "defines": ["DEBUG"],
+      "defines": ["DEBUG", "UNICODE", "_UNICODE"],
       "compilerPath": "/usr/bin/gcc",
       "cStandard": "c17",
       "cppStandard": "c++11",
-      "intelliSenseMode": "gcc-x64"
+      "intelliSenseMode": "linux-gcc-x64"
     },
     {
-      // Mac配置
       "name": "Mac",
       "includePath": ["${workspaceFolder}/**"],
       "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
@@ -41,6 +37,5 @@
       "intelliSenseMode": "macos-gcc-x64"
     }
   ],
-
   "version": 4
 }

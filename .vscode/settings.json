@@ -23,9 +23,9 @@
   "GBK2UTF8.autoDetect": true, // 是否主动提示编码转换
   "code-runner.runInTerminal": true, // 设置成false会在“输出”中输出，无法输入
   "code-runner.executorMap": {
-    "c": "gcc '$fileName' -o '$fileNameWithoutExt.exe' -Wall -O2 -m64 -lm -static-libgcc -fexec-charset=utf-8 -finput-charset=utf-8  && clear && ./'$fileNameWithoutExt.exe'",
-    "cpp": "g++ -std=c++11 '$fileName' -o '$fileNameWithoutExt.exe' -w -Wall -O2 -m64 -static-libgcc -lpsapi -I 'C:/Users/Carl Yu/VS Code/Algorithm_DS' -fexec-charset=GBK -finput-charset=utf-8 && clear && ./'$fileNameWithoutExt.exe'"
-    // 当前配置: Win32, MinGW64, gcc 8.1.0, g++ 8.1.0, pwsh
+    "c": "gcc '$fileName' -o '$fileNameWithoutExt.exec' -Wall -O2 -m64 -lm -static-libgcc -fexec-charset=utf-8 -finput-charset=utf-8  && clear && ./'$fileNameWithoutExt.exec'",
+    "cpp": "g++ -std=c++11 '$fileName' -o '$fileNameWithoutExt.exec' -w -Wall -O2 -m64 -static-libgcc -I/home/carlyu/vscode/Algorithm_DS -fexec-charset=utf-8 -finput-charset=utf-8 && clear && ./'$fileNameWithoutExt.exec'"
+    // 当前配置: Linux gcc bash
     // 其他系统需要稍作修改
     // 在输出文件后面加上.exec后缀，方便进行屏蔽
     // -finput-charset 设定输入流的文件编码，便于运行中文文件；utf8：内置终端使用；GBK：外置终端
@@ -160,7 +160,7 @@
     "**/*": false,
     "**/.gitkeep": true, // 隐藏gitkeep文件
     "**/*.dSYM": true, // 隐藏调试
-    "**/*.exec": false, // 隐藏可执行文件
+    "**/*.exec": true, // 隐藏Linux可执行文件
     "**/*.zip": true,
     "**/*.o": true,
     "**/*.exe": true, // 为了区分可执行文件已经将项目可执行文件命名为.exec所以这里不隐藏
