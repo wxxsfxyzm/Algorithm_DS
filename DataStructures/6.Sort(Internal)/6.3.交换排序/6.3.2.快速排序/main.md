@@ -45,6 +45,7 @@ int Partition(ElemType a[], int low, int high){
     }
     a[low] = pivot;                                 // 枢轴元素存放到最终位置
     return low;                                     // 返回枢轴元素的位置
+}
 ```
 
 在一趟排序后，枢轴元素已经在其最终位置上，且左边的元素均小于枢轴，右边的元素均大于枢轴，接下来递归地对左右两个子表进行快速排序。
