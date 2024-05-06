@@ -17,7 +17,7 @@
     </tr>
     <tr>
         <td>直接插入排序</td>
-        <td><script type="math/tex">O(n)</script></td>
+        <td>$O(n)$</td>
         <td>$O(n^2)$</td>
         <td>$O(n^2)$</td>
         <td>$O(1)$</td>
