@@ -1,8 +1,5 @@
 # 各种排序算法的性能比较
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
 <table>
     <tr>
         <td rowspan="2"><b>算法种类</b></td>
@@ -17,7 +14,7 @@
     </tr>
     <tr>
         <td>直接插入排序</td>
-        <td><script type="math/tex">O(n)</script></td>
+        <td>$O(n)$</td>
         <td>$O(n^2)$</td>
         <td>$O(n^2)$</td>
         <td>$O(1)$</td>
@@ -29,6 +26,52 @@
         <td>$O(n^2)$</td>
         <td>$O(n^2)$</td>
         <td>$O(1)$</td>
+        <td>稳定</td>
+    </tr>
+    <tr>
+        <td>简单选择排序</td>
+        <td>$O(n^2)$</td>
+        <td>$O(n^2)$</td>
+        <td>$O(n^2)$</td>
+        <td>$O(1)$</td>
+        <td>不稳定</td>
+    </tr>
+    <tr>
+        <td>希尔排序</td>
+        <td colspan="3"></td>
+        <td>$O(1)$</td>
+        <td>不稳定</td>
+    </tr>
+    <tr>
+        <td>快速排序</td>
+        <td>$O(nlog_2n)$</td>
+        <td>$O(nlog_2n)$</td>
+        <td>$O(n^2)$</td>
+        <td>$O(log_2n)$</td>
+        <td>不稳定</td>
+    </tr>
+    <tr>
+        <td>堆排序</td>
+        <td>$O(nlog_2n)$</td>
+        <td>$O(nlog_2n)$</td>
+        <td>$O(nlog_2n)$</td>
+        <td>$O(1)$</td>
+        <td>不稳定</td>
+    </tr>
+    <tr>
+        <td>2路归并排序</td>
+        <td>$O(nlog_2n)$</td>
+        <td>$O(nlog_2n)$</td>
+        <td>$O(nlog_2n)$</td>
+        <td>$O(n)$</td>
+        <td>稳定</td>
+    </tr>
+    <tr>
+        <td>基数排序</td>
+        <td>$O(d(n+r))$</td>
+        <td>$O(d(n+r))$</td>
+        <td>$O(d(n+r))$</td>
+        <td>$O(r)$</td>
         <td>稳定</td>
     </tr>
 </table>
