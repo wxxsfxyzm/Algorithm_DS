@@ -54,7 +54,7 @@ int Partition(ElemType a[], int low, int high){
 
 ```cpp
 void QuickSort(ElemType a[], int low, int high){
-    if (low < high){                                // 递归跳出的条件
+    if (low < high){                                 // 递归跳出的条件
         // Partition() 就是划分操作，将表a划分为满足上述条件的两个子表
         int pivotpos = Partition(a, low, high);      // 一趟划分，返回枢轴的位置
         QuickSort(a, low, pivotpos - 1);             // 递归地对左子表进行快速排序
