@@ -63,7 +63,7 @@ void EnQueue(LinkQueue &Q, ElemType x){
 
 ```cpp
 bool DeQueue(LinkQueue &Q, ElemType &x){
-    if(Q.front == Q.rear)
+    if (Q.front == Q.rear)
         return false;                       // 空队
     LinkNode *p = Q.front -> next;
     x = p -> data;
