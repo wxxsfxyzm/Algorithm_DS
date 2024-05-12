@@ -80,3 +80,44 @@ public:
 ```
 
 ## 思路：动态规划
+
+可以考虑用动态规划的思想来解决这个问题。
+
+很容易可以发现，对于我们当前考虑的这个数，要么是作为山峰（即 nums[i] > nums[i-1]），要么是作为山谷（即 nums[i] < nums[i - 1]）。
+
+设 dp 状态 dp[i][0]，表示考虑前 i 个数，第 i 个数作为山峰的摆动子序列的最长长度
+设 dp 状态 dp[i][1]，表示考虑前 i 个数，第 i 个数作为山谷的摆动子序列的最长长度
+则转移方程为：
+
+dp[i][0] = max(dp[i][0], dp[j][1] + 1)，其中 0 < j < i 且 nums[j] < nums[i]，表示将 nums[i]接到前面某个山谷后面，作为山峰。
+dp[i][1] = max(dp[i][1], dp[j][0] + 1)，其中 0 < j < i 且 nums[j] > nums[i]，表示将 nums[i]接到前面某个山峰后面，作为山谷。
+初始状态：
+
+由于一个数可以接到前面的某个数后面，也可以以自身为子序列的起点，所以初始状态为：dp[0][0] = dp[0][1] = 1。
+
+### 代码实现
+
+```cpp
+
+class Solution {
+public:
+int dp[1005][2];
+int wiggleMaxLength(vector<int>& nums) {
+memset(dp, 0, sizeof dp);
+dp[0][0] = dp[0][1] = 1;
+for (int i = 1; i < nums.size(); ++i) {
+dp[i][0] = dp[i][1] = 1;
+for (int j = 0; j < i; ++j) {
+if (nums[j] > nums[i]) dp[i][1] = max(dp[i][1], dp[j][0] + 1);
+}
+for (int j = 0; j < i; ++j) {
+if (nums[j] < nums[i]) dp[i][0] = max(dp[i][0], dp[j][1] + 1);
+}
+}
+return max(dp[nums.size() - 1][0], dp[nums.size() - 1][1]);
+}
+};
+```
+
+- 时间复杂度：O(n^2)
+- 空间复杂度：O(n)
