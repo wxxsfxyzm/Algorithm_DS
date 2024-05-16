@@ -3,6 +3,7 @@
   "C_Cpp.autocomplete": "default", // 安装了clangd和C/C++ Snippets后可以进用掉内置的snippets和complete
   "terminal.integrated.fontFamily": "Cascadia Code", // 换字体
   "terminal.integrated.fontSize": 20, // 字体大小
+  "terminal.integrated.shell.linux": "/usr/bin/zsh",
   "files.defaultLanguage": "cpp", // ctrl+N新建文件后默认的语言
   "files.autoSave": "onFocusChange", // 自动保存
   "editor.formatOnType": true, // 输入分号(C/C++的语句结束标识)后自动格式化当前这一行的代码
