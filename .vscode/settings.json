@@ -3,14 +3,14 @@
   "C_Cpp.autocomplete": "default", // 安装了clangd和C/C++ Snippets后可以进用掉内置的snippets和complete
   "terminal.integrated.fontFamily": "Cascadia Code", // 换字体
   "terminal.integrated.fontSize": 20, // 字体大小
-  "terminal.integrated.shell.linux": "/usr/bin/zsh",
+  "terminal.integrated.shell.linux": "/usr/bin/zsh", // 默认终端shell为zsh
   "files.defaultLanguage": "cpp", // ctrl+N新建文件后默认的语言
-  "files.autoSave": "onFocusChange", // 自动保存
-  "editor.formatOnType": true, // 输入分号(C/C++的语句结束标识)后自动格式化当前这一行的代码
+  "files.autoSave": "onFocusChange", // 焦点改变时自动保存
   "editor.defaultFormatter": "esbenp.prettier-vscode", // 默认格式化工具prettier
   "[cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools" // C++文件使用cpptools格式化
   },
+  "editor.formatOnType": true, // 输入分号(C/C++的语句结束标识)后自动格式化当前这一行的代码
   "editor.formatOnSave": true, // 保存时格式化
   "editor.formatOnPaste": true, // 粘贴时格式化
   "editor.suggest.preview": true, // 在编辑器中实时预览代码建议
@@ -22,12 +22,12 @@
     "comments": false,
     "strings": false
   },
-  "GBK2UTF8.autoDetect": true, // 是否主动提示编码转换
+  "GBK2UTF8.autoDetect": true, // 是否主动提示GBK To UTF8编码转换
   "code-runner.runInTerminal": true, // 设置成false会在“输出”中输出，无法输入
   "code-runner.executorMap": {
     "c": "gcc '$fileName' -o '$fileNameWithoutExt.exec' -Wall -O2 -m64 -lm -static-libgcc -fexec-charset=utf-8 -finput-charset=utf-8  && clear && ./'$fileNameWithoutExt.exec'",
     "cpp": "g++ -std=c++11 '$fileName' -o '$fileNameWithoutExt.exec' -w -Wall -O2 -m64 -static-libgcc -fexec-charset=utf-8 -finput-charset=utf-8 && clear && ./'$fileNameWithoutExt.exec'"
-    // 当前配置: Linux gcc bash
+    // 当前配置: Linux gcc zsh
     // 其他系统需要稍作修改
     // 在输出文件后面加上.exec后缀，方便进行屏蔽
     // -finput-charset 设定输入流的文件编码，便于运行中文文件；utf8：内置终端使用；GBK：外置终端
@@ -38,14 +38,10 @@
   "code-runner.saveFileBeforeRun": true, // run code前保存
   "code-runner.preserveFocus": false, // 若为false，run code后光标会聚焦到终端上。如果需要频繁输入数据可设为false
   "code-runner.clearPreviousOutput": true, // 每次run code前清空属于code runner的终端消息，默认false
-  "code-runner.ignoreSelection": false, // 默认为false，效果是鼠标选中一块代码后可以单独执行，但C是编译型语言，不适合这样用
+  "code-runner.ignoreSelection": true, // 默认为false，效果是鼠标选中一块代码后可以单独执行，但C是编译型语言，不适合这样用
   "code-runner.fileDirectoryAsCwd": true, // 将code runner终端的工作目录切换到文件目录再运行，对依赖cwd的程序产生影响；如果为false，executorMap要加cd $dir
   "C_Cpp.clang_format_sortIncludes": true, // 格式化时调整include的顺序（按字母排序）
-  "C_Cpp.default.includePath": [
-    "${workspaceFolder}/**",
-    "D:\\Dev\\MinGW64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include\\c++",
-    "D:\\Dev\\MinGW64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include\\c++\\bits"
-  ], // 默认的include路径，可以是相对路径，也可以是绝对路径
+  "C_Cpp.default.includePath": ["${workspaceFolder}/**"], // 默认的include路径，可以是相对路径，也可以是绝对路径
   "C_Cpp.errorSquiggles": "enabledIfIncludesResolve", // 仅当include路径解析成功时才启用错误波浪线
   "clang.completion.enable": false, // clang代码提示开关，开了会有冲突
   "clang.executable": "clang", // clangd的路径
@@ -159,12 +155,12 @@
     "stdc++": "cpp"
   },
   "files.exclude": {
-    "**/*": false,
+    "**/*": false, // 所有文件默认显示
     "**/.gitkeep": true, // 隐藏gitkeep文件
     "**/*.dSYM": true, // 隐藏调试
     "**/*.exec": true, // 隐藏Linux可执行文件
-    "**/*.zip": true,
-    "**/*.o": true,
+    "**/*.zip": true, // 隐藏压缩包
+    "**/*.o": true, // 隐藏目标文件
     "**/*.exe": true, // 为了区分可执行文件已经将项目可执行文件命名为.exec所以这里不隐藏
     "**/*.class": true,
     "**/.classpath": true,
