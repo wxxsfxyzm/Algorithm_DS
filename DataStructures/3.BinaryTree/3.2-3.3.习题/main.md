@@ -511,9 +511,59 @@
 16. 设计一个算法将二叉树的叶结点按从左到右的顺序连成一个单链表，表头指针
     为`head`。
 
+    - 通常我们所用的先序、中序和后序遍历对于叶子结点的访问顺序都是从左到右，这里
+      我们选择中序递归遍历
+    - 算法思想：设置前驱结点指针 pre，初始为空。第一个叶子结点由指针 head 指向，
+      遍历到叶子结点时，就将它的前驱的 rchild 指针指向它，最后一个叶子结点的
+      rchild 为空。
+
+    - 算法实现如下：
+
+    ```c++
+    void InOrderThreading(BiTree &p, BiTree &pre){
+        if(p){
+            InOrderThreading(p->lchild, pre);  // 递归左子树
+            if(!p->lchild && !p->rchild){      // 叶子结点
+                if(!head){                      // 第一个叶子结点
+                    head = p;                  // 头指针指向叶子结点
+                    pre = p;                   // 前驱结点指向叶子结点
+                } else {·
+                    pre->rchild = p;            // 前驱结点的右孩子指向叶子结点
+                    pre = p;                    // 前驱结点指向叶子结点
+                }
+            }·
+            InOrderThreading(p->rchild, pre);  // 递归右子树
+        }
+    }
+    ```
+
 17. 试设计判断两棵二叉树是否相似的算法。所谓二叉树 T1 和 T2 相似，指的是 T1 和
     T2 都是空树或者都只有一个根结点，或者 T1 的左子树和 T2 的左子树相似，且 T1
     的右子树和 T2 的右子树相似。
+
+    - 本题采用递归算法，若 T1 和 T2 都是空树，则相似；若有一个为空另一个不为空，
+      则必然不相似；否则递归地比较它们的左、右两子树是否相似。递归定义如下：
+        - f(T1, T2) = true, T1 = T2 = nullptr
+        - f(T1, T2) = false, T1 = nullptr,T2 != nullptr 或 T2 = nullptr,T1 !=
+          nullptr
+        - f(T1, T2) = f(T1->lchild, T2->lchild) && f(T1->rchild, T2->rchild), 若
+          T1、T2 均不为 null
+    - 算法实现如下：
+
+    ```c++
+    int similar(BiTree T1, BiTree T2){
+    // 采用递归的算法判断两棵树是否相似
+    int leftS, rightS;
+    if(T1 == nullptr && T2 == nullptr)  // 两棵树都为空
+        return 1;                        // 相似
+    else if(T1 == nullptr || T2 == nullptr)  // 有一棵树为空
+        return 0;                        // 不相似
+    else{
+        leftS = similar(T1->lchild, T2->lchild);  // 比较左子树
+        rightS = similar(T1->rchild, T2->rchild);  // 比较右子树
+        return leftS && rightS;          // 左右子树都相似
+    }
+    ```
 
 18. 写出在中序线索二叉树中查找指定结点在后序的前驱结点的算法。
 
