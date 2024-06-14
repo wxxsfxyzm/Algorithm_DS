@@ -455,11 +455,61 @@
     }
     ```
 
-15. 设有一颗满二叉树（所有结点值均不同），已知其先序序列为 pre，设计一个算法，求
-    其后序序列 post。
+    **注意**：本体队列中的结点，在出队后仍需要保留在队列中，以便求二叉树的宽度，
+    所以设置的队列采用非环形队列，否则出队后可能被其他结点覆盖，无法再求二叉树的
+    宽度。
 
-16. 设计一个算法将二叉树的叶结点按从左到右的顺序连成一个单链表，表头指针为
-    `head`。
+15. 设有一颗满二叉树（所有结点值均不同），已知其先序序列为 `pre`，设计一个算法，
+    求其后序序列 `post`。
+
+    - 算法思想：对一般二叉树，仅根据先序或后序序列，不能确定另一个遍历序列。但对
+      满二叉树，任意一个结点的左、右子树均含有相等的结点数，同时，先序序列的第一
+      个结点作为后序序列的最后一个结点，由此得到将先序序列 pre[l1...h1]转换为后
+      序序列 post[l2...h2]的递归模型如下：
+
+        - f(pre,l1,h1,post,l2,h2) = Do Nothing h1<l1 时
+        - f(pre,l1,h1,post,l2,h2) = post[h2] = pre[l1] 其他情况
+            - 取中间位置 half = (h1-l1)/2;
+            - 将 pre[l1+1...l1+half] 左子树转换为 post[l2...l2+half-1],
+            - 即 f(pre,l1+1,l1+half,post,l2,l2+half-1)
+            - 将 pre[l1+half+1...h1] 右子树转换为 post[l2+half...h2-1],
+            - 即 f(pre,l1+half+1,h1,post,l2+half,h2-1)
+
+        其中，post[h2] = pre[l1] 表示后序序列的最后一个结点（根结点）等于先序序
+        列的第一个结点（根结点）。相应的算法如下：
+
+    ```c++
+    void PreToPost(ElemType pre[], ElemType post[], int l1, int h1, int l2, int h2){
+        int half;
+        if(h1>=l1){
+            post[h2] = pre[l1];                 // 根结点
+            half = (h1-l1)/2;                   // 中间位置
+            PreToPost(pre, post, l1+1, l1+half, l2, l2+half-1);  // 左子树
+            PreToPost(pre, post, l1+half+1, h1, l2+half, h2-1);  // 右子树
+        }
+    }
+    ```
+
+    例如，有以下代码：
+
+    ```c++
+    ElemType *pre = "ABCDEFG";
+    ElemType post[MAXSIZE];
+    PreToPost(pre, post, 0, 6, 0, 6);
+    // cout
+    for(int i = 0; i < 7; i++)
+        cout << post[i];
+    cout << endl;
+    ```
+
+    输出结果为：
+
+    ```plaintext
+    CDBFGEA
+    ```
+
+16. 设计一个算法将二叉树的叶结点按从左到右的顺序连成一个单链表，表头指针
+    为`head`。
 
 17. 试设计判断两棵二叉树是否相似的算法。所谓二叉树 T1 和 T2 相似，指的是 T1 和
     T2 都是空树或者都只有一个根结点，或者 T1 的左子树和 T2 的左子树相似，且 T1
