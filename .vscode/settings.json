@@ -7,6 +7,7 @@
   "files.defaultLanguage": "cpp", // ctrl+N新建文件后默认的语言
   "files.autoSave": "onFocusChange", // 焦点改变时自动保存
   "editor.defaultFormatter": "esbenp.prettier-vscode", // 默认格式化工具prettier
+  "editor.tabSize": 4, // tab缩进
   "[cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools" // C++文件使用cpptools格式化
   },
